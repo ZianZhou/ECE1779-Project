@@ -2,7 +2,8 @@ version: '3.8'
 
 services:
   web_server:
-    build: ./web_server
+    build:
+      context: ./web_server
     ports:
       - "5000:5000"
     networks:
@@ -31,6 +32,14 @@ services:
     environment:
       - GF_SECURITY_ADMIN_USER=admin
       - GF_SECURITY_ADMIN_PASSWORD=admin
+
+  coverity_analysis:
+    build:
+      context: .
+    command: ["./run_coverity.sh"]
+    volumes:
+      - .:/workspace
+    working_dir: /workspace
 
 networks:
   monitoring:
