@@ -1,0 +1,20 @@
+groups:
+  - name: web_server_alerts
+    rules:
+      - alert: HighLatency
+        expr: http_request_latency_seconds_total > 0.2
+        for: 1m
+        labels:
+          severity: warning
+        annotations:
+          summary: "High latency detected"
+          description: "Request latency exceeded 200ms for the last minute."
+
+      - alert: HighErrorRate
+        expr: rate(http_errors_total[5m]) > 0.1
+        for: 5m
+        labels:
+          severity: critical
+        annotations:
+          summary: "High error rate detected"
+          description: "More than 10% of requests failed in the last 5 minutes."

@@ -21,7 +21,7 @@ def log_metrics(response):
     latency = time.time() - request.start_time
     metrics["request_count"] += 1
     metrics["latency_sum"] += latency
-    
+
     # Log errors
     if response.status_code >= 400:
         metrics["error_count"] += 1

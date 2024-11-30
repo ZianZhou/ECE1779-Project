@@ -1,0 +1,30 @@
+{
+    "title": "Website Performance",
+    "panels": [
+      {
+        "title": "Request Count",
+        "type": "stat",
+        "datasource": "Prometheus",
+        "targets": [
+          { "expr": "http_requests_total", "format": "time_series" }
+        ]
+      },
+      {
+        "title": "Error Rate",
+        "type": "stat",
+        "datasource": "Prometheus",
+        "targets": [
+          { "expr": "http_errors_total", "format": "time_series" }
+        ]
+      },
+      {
+        "title": "Latency",
+        "type": "graph",
+        "datasource": "Prometheus",
+        "targets": [
+          { "expr": "http_request_latency_seconds_total", "format": "time_series" }
+        ]
+      }
+    ]
+  }
+  
