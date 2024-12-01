@@ -1,0 +1,59 @@
+Run started:2024-12-01 06:46:09.928588
+
+Test results:
+>> Issue: [B311:blacklist] Standard pseudo-random generators are not suitable for security/cryptographic purposes.
+   Severity: Low   Confidence: High
+   CWE: CWE-330 (https://cwe.mitre.org/data/definitions/330.html)
+   More Info: https://bandit.readthedocs.io/en/1.8.0/blacklists/blacklist_calls.html#b311-random
+   Location: web_server/app.py:33:15
+32	def home():
+33	    time.sleep(random.uniform(0.1, 0.3))  # Simulate processing time
+34	    return "Welcome to the Python Web Server!"
+
+--------------------------------------------------
+>> Issue: [B311:blacklist] Standard pseudo-random generators are not suitable for security/cryptographic purposes.
+   Severity: Low   Confidence: High
+   CWE: CWE-330 (https://cwe.mitre.org/data/definitions/330.html)
+   More Info: https://bandit.readthedocs.io/en/1.8.0/blacklists/blacklist_calls.html#b311-random
+   Location: web_server/app.py:56:15
+55	def simulate_error():
+56	    time.sleep(random.uniform(0.1, 0.3))  # Simulate processing time
+57	    return jsonify({"error": "This is a simulated error"}), 500
+
+--------------------------------------------------
+>> Issue: [B201:flask_debug_true] A Flask app appears to be run with debug=True, which exposes the Werkzeug debugger and allows the execution of arbitrary code.
+   Severity: High   Confidence: Medium
+   CWE: CWE-94 (https://cwe.mitre.org/data/definitions/94.html)
+   More Info: https://bandit.readthedocs.io/en/1.8.0/plugins/b201_flask_debug_true.html
+   Location: web_server/app.py:60:4
+59	if __name__ == "__main__":
+60	    app.run(host="0.0.0.0", port=5000, debug=True)
+
+--------------------------------------------------
+>> Issue: [B104:hardcoded_bind_all_interfaces] Possible binding to all interfaces.
+   Severity: Medium   Confidence: Medium
+   CWE: CWE-605 (https://cwe.mitre.org/data/definitions/605.html)
+   More Info: https://bandit.readthedocs.io/en/1.8.0/plugins/b104_hardcoded_bind_all_interfaces.html
+   Location: web_server/app.py:60:17
+59	if __name__ == "__main__":
+60	    app.run(host="0.0.0.0", port=5000, debug=True)
+
+--------------------------------------------------
+
+Code scanned:
+	Total lines of code: 44
+	Total lines skipped (#nosec): 0
+	Total potential issues skipped due to specifically being disabled (e.g., #nosec BXXX): 0
+
+Run metrics:
+	Total issues (by severity):
+		Undefined: 0
+		Low: 2
+		Medium: 1
+		High: 1
+	Total issues (by confidence):
+		Undefined: 0
+		Low: 0
+		Medium: 2
+		High: 2
+Files skipped (0):

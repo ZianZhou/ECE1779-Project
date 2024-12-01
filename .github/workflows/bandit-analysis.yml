@@ -1,0 +1,34 @@
+name: Bandit Static Code Analysis
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  bandit:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v3
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: "3.10"
+
+      - name: Install Bandit
+        run: pip install bandit
+
+      - name: Run Bandit
+        run: bandit -r web_server/ --severity-level HIGH --confidence-level HIGH --format html --output bandit-report.html
+
+      - name: Upload Bandit Report
+        uses: actions/upload-artifact@v3
+        with:
+          name: bandit-report
+          path: bandit-report.html
