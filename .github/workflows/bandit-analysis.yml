@@ -25,7 +25,7 @@ jobs:
         run: pip install bandit
 
       - name: Run Bandit
-        run: bandit -r web_server/ --severity-level HIGH --confidence-level HIGH --format html --output bandit-report.html
+        run: bandit -r web_server/ --severity-level high --confidence-level high --format html --output bandit-report.html
 
       - name: Upload Bandit Report
         uses: actions/upload-artifact@v3
