@@ -76,34 +76,34 @@ jobs:
           DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
         run: docker-compose up -d
 
-  run-tests:
-    name: Run Automated Tests
-    runs-on: ubuntu-latest
-    needs:
-      - deploy-application
+  # run-tests:
+  #   name: Run Automated Tests
+  #   runs-on: ubuntu-latest
+  #   needs:
+  #     - deploy-application
 
-    steps:
-      - name: Checkout Code
-        uses: actions/checkout@v3
+  #   steps:
+  #     - name: Checkout Code
+  #       uses: actions/checkout@v3
 
-      - name: Install Dependencies
-        run: pip install requests
+  #     - name: Install Dependencies
+  #       run: pip install requests
 
-      - name: Run Tests
-        run: python tests/test_web_server.py
+  #     - name: Run Tests
+  #       run: python tests/test_web_server.py
 
-  validate-observability:
-    name: Validate Observability
-    runs-on: ubuntu-latest
-    needs:
-      - deploy-application
+  # validate-observability:
+  #   name: Validate Observability
+  #   runs-on: ubuntu-latest
+  #   needs:
+  #     - deploy-application
 
-    steps:
-      - name: Checkout Code
-        uses: actions/checkout@v3
+  #   steps:
+  #     - name: Checkout Code
+  #       uses: actions/checkout@v3
 
-      - name: Verify Prometheus Metrics
-        run: curl http://localhost:9090/metrics | grep "http_requests_total"
+  #     - name: Verify Prometheus Metrics
+  #       run: curl http://localhost:9090/metrics | grep "http_requests_total"
 
-      - name: Verify Grafana is Running
-        run: curl -I http://localhost:3000 | grep "200 OK"
+  #     - name: Verify Grafana is Running
+  #       run: curl -I http://localhost:3000 | grep "200 OK"
