@@ -2,25 +2,28 @@ version: '3.8'
 
 services:
   web_server:
-    build:
-      context: ./web_server
+    image: ruanshih/ece1779-web-server:latest
     ports:
-      - "5000:5000"
+      - "5001:5000"
     networks:
       - monitoring
+    expose:
+      - "5000"
 
   prometheus:
-    image: prom/prometheus
+    image: prom/prometheus:latest
+    container_name: prometheus
     volumes:
-      - ./prometheus/prometheus.yml:/etc/prometheus/prometheus.yml
-      - ./prometheus/alert.rules.yml:/etc/prometheus/alert.rules.yml
+      - ./prometheus/prometheus.yml:/etc/prometheus/prometheus.yml:ro
+      - ./prometheus/alerts.rules.yml:/etc/prometheus/alert.rules.yml:ro
     ports:
       - "9090:9090"
     networks:
       - monitoring
 
   grafana:
-    image: grafana/grafana
+    image: grafana/grafana:latest
+    container_name: grafana
     ports:
       - "3000:3000"
     volumes:
@@ -32,14 +35,8 @@ services:
     environment:
       - GF_SECURITY_ADMIN_USER=admin
       - GF_SECURITY_ADMIN_PASSWORD=admin
-
-  coverity_analysis:
-    build:
-      context: .
-    command: ["./run_coverity.sh"]
-    volumes:
-      - .:/workspace
-    working_dir: /workspace
+    depends_on:
+      - prometheus
 
 networks:
   monitoring:

@@ -1,6 +1,7 @@
 from flask import Flask, request, jsonify
 import time
 import random
+from metrics import setup_metrics
 
 app = Flask(__name__)
 
@@ -10,6 +11,8 @@ metrics = {
     "error_count": 0,
     "latency_sum": 0,
 }
+
+setup_metrics(app)
 
 @app.before_request
 def start_timer():
