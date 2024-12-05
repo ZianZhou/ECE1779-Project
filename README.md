@@ -5,6 +5,7 @@
 This project sets up a monitoring solution using a Python web server, Prometheus, and Grafana to monitor metrics such as request count, latency, and error rates. Alerts are configured for high latency and error rates, with data visualized on Grafana dashboards.
 
 ## Features
+
 - Real-time request monitoring
 - Response time tracking and latency analysis
 - Error rate monitoring
@@ -13,13 +14,13 @@ This project sets up a monitoring solution using a Python web server, Prometheus
 - Interactive Grafana dashboards
 
 ## Available Metrics
+
 - Request Rate (requests per second)
 - Error Rate
 - Response Time Distribution
 - Memory Usage
 - CPU Usage
 - Request Duration Distribution (Latency Heatmap)
-
 
 ## Prerequisites
 
@@ -52,13 +53,14 @@ docker-compose up --build
 - Prometheus: http://localhost:9090
 - Grafana: http://localhost:3000 (login: admin/admin)
 
-    View Metrics:
-    - Request rate
-    - Error rate
-    - Response time
-    - System resources
+  View Metrics:
 
-    Note: If you don't see data immediately, try generating some test traffic using the curl commands in Step 4.
+  - Request rate
+  - Error rate
+  - Response time
+  - System resources
+
+  Note: If you don't see data immediately, try generating some test traffic using the curl commands in Step 4.
 
 ### Step 4: Test the monitoring
 
@@ -73,4 +75,35 @@ curl http://localhost:5000/simulate_error
 ```bash
 docker-compose down
 docker-compose down -v
+```
+
+# Pulling the docker image from docker hub
+
+This repository hosts a containerized solution for monitoring website performance using a Dockerized web server. The system collects metrics and provides observability through Prometheus and Grafana.
+
+## Docker Image
+
+The Docker image for this project is hosted on Docker Hub. You can pull and run the image to set up the web server locally or integrate it into your infrastructure.
+
+---
+
+## How to Use the Docker Image
+
+### Step 1: Pull the Docker Image
+
+To pull the image from Docker Hub, use the following command:
+
+```bash
+docker pull <your-docker-username>/<image-name>:latest
+
+docker run -p 5000:5000 <your-docker-username>/<image-name>:latest
+
+docker run -p 5000:5000 -e CUSTOM_ENV_VAR=value <your-docker-username>/<image-name>:latest
+
+docker pull <your-docker-username>/<image-name>:latest
+docker run -p 5000:5000 <your-docker-username>/<image-name>:latest
+curl http://localhost:5000/metrics
+docker ps
+docker stop <container-id>
+docker rm <container-id>
 ```

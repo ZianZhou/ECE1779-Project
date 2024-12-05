@@ -1,11 +1,12 @@
+# Example Dockerfile for your web server
 FROM python:3.10-slim
 
 WORKDIR /app
 
-RUN pip install flask prometheus-client
+COPY requirements.txt .
+RUN pip install -r requirements.txt
 
-COPY app.py .
-COPY metrics.py .
+COPY . .
 
 EXPOSE 5000
 
