@@ -70,6 +70,8 @@ jobs:
           sudo apt-get install -y docker-compose
 
       - name: Deploy Services
+        env:
+          DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
         run: docker-compose up -d
 
   run-tests:

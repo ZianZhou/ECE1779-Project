@@ -2,7 +2,10 @@ version: '3.8'
 
 services:
   web_server:
-    image: ruanshih/ece1779-web-server:latest
+    build:
+      context: ./web_server
+      dockerfile: Dockerfile
+    image: ${DOCKER_USERNAME}/web-monitoring:latest
     ports:
       - "5001:5000"
     networks:
