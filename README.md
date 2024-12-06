@@ -134,5 +134,5 @@ locust -f tests/locustfile.py
 
 ### Step 3
 By default, Locust will start a web interface at http://localhost:8089. Access it via your browser.
-Set the number of users, spawn rate and host.
+Set the number of users, ramp up and host.
 
