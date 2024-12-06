@@ -106,4 +106,33 @@ curl http://localhost:5000/metrics
 docker ps
 docker stop <container-id>
 docker rm <container-id>
+
 ```
+---
+## Testing
+This project contains a Locust-based testing script to evaluate the performance of a web monitoring system. The tests are designed to measure HTTP request latency, throughput, error rates, and simulate different user behaviors for key endpoints.
+
+### Features
+- HTTP Request Latency: Measure the time it takes to receive responses from the server.
+- Throughput Testing: Evaluate the number of requests the server can handle per second.
+- Error Rate Monitoring: Identify and log failure rate during testing.
+- Endpoint-Specific Metrics: Simulate different user behaviors across key endpoints (/, /metrics, /nonexistent).
+- Load Testing: Simulate multiple concurrent users accessing the system.
+- Stress Testing: Push the system to its limits to identify breaking points.
+
+### Usage
+#### Step 1
+Install Locust globally or in a virtual environment： 
+```bash
+pip install locust
+```
+#### Step 2
+Execute the Locust command:
+```bash
+locust -f tests/locustfile.py
+```
+
+#### Step 3
+By default, Locust will start a web interface at http://localhost:8089. Access it via your browser.
+Set the number of users, spawn rate and host.
+
