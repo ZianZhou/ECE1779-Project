@@ -62,6 +62,25 @@ docker-compose up --build
 
   Note: If you don't see data immediately, try generating some test traffic using the curl commands in Step 4.
 
+  Details for setting up the pre-configured Grafana dashboard(if you want to reproduce the dashboard configuration, follow the steps below):
+      After accessing Grafana (http://localhost:3000):
+
+    1. Log in with admin/admin
+    2. Configure Prometheus Data Source:
+    - Click "Connections" in the left sidebar
+    - Click "Add new connection"
+    - Select "Prometheus"
+    - Set URL to `http://prometheus:9090`
+    - Click "Save & test"
+
+    3. Import Dashboard:
+    - Click "Dashboards" in the left sidebar
+    - Click "Import"
+    - Click "Upload JSON file"
+    - Select `grafana/dashboards/website_performance.json`
+    - Select "Prometheus" as the data source
+    - Click "Import"
+
 ### Step 4: Test the monitoring
 
 ```bash
