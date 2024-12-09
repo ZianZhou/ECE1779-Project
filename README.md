@@ -113,14 +113,14 @@ The Docker image for this project is hosted on Docker Hub. You can pull and run 
 To pull the image from Docker Hub, use the following command:
 
 ```bash
-docker pull zanyguy/web-monitoring:latest:latest
+docker pull zanyguy/web-monitoring:latest
 
-docker run -p 5000:5000 zanyguy/web-monitoring:latest:latest
+docker run -p 5000:5000 zanyguy/web-monitoring:latest
 
-docker run -p 5000:5000 -e CUSTOM_ENV_VAR=value zanyguy/web-monitoring:latest:latest
+docker run -p 5000:5000 -e CUSTOM_ENV_VAR=value zanyguy/web-monitoring:latest
 
-docker pull zanyguy/web-monitoring:latest:latest
-docker run -p 5000:5000 zanyguy/web-monitoring:latest:latest
+docker pull zanyguy/web-monitoring:latest
+docker run -p 5000:5000 zanyguy/web-monitoring:latest
 curl http://localhost:5000/metrics
 docker ps
 docker stop <container-id>
