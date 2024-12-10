@@ -152,6 +152,14 @@ locust -f tests/locustfile.py
 ```
 
 ### Step 3
-By default, Locust will start a web interface at http://localhost:8089. Access it via your browser.
+By default, Locust will start a web interface at http://localhost:8089. 
+Access localhost:8089 via browser.
 Set the number of users, ramp up and host.
+Then click start to view generated traffic and performance.
+
+### Preview
+<img width="1647" alt="Screenshot 2024-12-10 at 12 04 47 PM" src="https://github.com/user-attachments/assets/a170b299-3a47-478c-92e7-d41498d2ff73">
+<img width="1751" alt="Screenshot 2024-12-10 at 12 03 56 PM" src="https://github.com/user-attachments/assets/3e9f2284-65d9-4c18-8985-fe019ff274e6">
+<img width="1532" alt="Screenshot 2024-12-09 at 12 19 52 PM" src="https://github.com/user-attachments/assets/f91fc4bb-7ec9-493f-98da-060466364173">
+
 
